@@ -6,4 +6,6 @@ int main(){
 	scanf("%f", &Celsius);
 	Fahrenheit = Celsius*(9/5)+32;
 	printf("Temperature in Fahrenheit: %f", Fahrenheit);
+
+	return 0;
 }

@@ -8,4 +8,6 @@ int main(){
 	area = 3.14*pow(radius, 2);
 	circum = 2*3.14*radius;
 	printf("Area of circle is: %f, and its Circumference is: %f", area, circum);
+	
+	return 0;
 }

@@ -8,5 +8,5 @@ int main(){
 	printf("Enter the second integer number: ");
 	scanf("%d", &num2);
 	printf("Result of the equation is: %d", (((num1+num2)*3)-10) );
-	
+	return 0;
 }
