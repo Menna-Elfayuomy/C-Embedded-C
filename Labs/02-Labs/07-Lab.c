@@ -23,4 +23,5 @@ int main(){
 		printf("ERROR !! Not a logical input");
 	}
 
+	return 0;
 }
