@@ -1,18 +1,10 @@
 #include <stdio.h>
 
 int main(){
-	int num, bit_num = 0, bit_value;
-	printf("Please enter your number: ");
-	scanf("%d", &num);
-	printf("Please enter your selected bit number: ");
-	scanf("%d", &bit_num);
-	bit_num = (1<<bit_num);
-	bit_value = num & bit_num;
-	if (bit_value == 0){
-		printf("The selected bit equals Zero");
-	}
-	else{
-		printf("The selected bit equals one");
-	}
+	int num, bit_num, bit_value;
+	printf("Please enter your number and a bit number\n");
+	scanf("%d%d", &num, &bit_num);
+	bit_value = (num >> bit_num)&1;
+	printf("The value of the bit is %d\n", bit_value);
 	return 0;
 }
