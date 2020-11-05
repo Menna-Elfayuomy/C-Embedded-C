@@ -15,6 +15,7 @@ int main(){
 int count_ones(int num){
 	
 	int counter = 0;
+	// you can change that loop with for loop to loop for 32 times that = the same size of the interger variable
 	while (num != 0){
 		if ((num&1)==1){
 			counter++;
