@@ -6,11 +6,11 @@ int main(){
 	int arr_A [8] = {1,2,3,4,5,6,7,8};
 	int arr_B [8] = {9,5,8,7,4,6,3,0};
 	int i;
-	printf("1st Array is \n");
+	printf("Array A is \n");
 	for (i=0; i<8; i++){
 		printf("%d ", arr_A[i]);
 	}
-	printf("\n2nd Array is \n");
+	printf("\nArray B is \n");
 	for (i=0; i<8; i++){
 		printf("%d ", arr_B[i]);
 	}
@@ -28,11 +28,12 @@ void swap_array(int arr1[8], int arr2[8]){
 		arr1[i] = arr2[i];
 		arr2[i] = temp_arr[i];
 	}
-	printf("New 1st array\n");
+	printf("New array A\n");
 	for(i=0; i<8; i++){
 		printf("%d ", arr1[i]);
 	}
 	printf("\n");
+	printf("New array B\n");
 	for(i=0; i<8; i++){
 		printf("%d ", arr2[i]);
 	}

@@ -15,7 +15,7 @@ int main(){
 }
 
 int index_func(int arr[6]){
-	int e_indx, flag=7;
+	int e_indx, flag=-1;
 	for (e_indx=0; e_indx<6; e_indx++){
 		if (arr[e_indx]==10){
 			flag=0;
