@@ -12,14 +12,15 @@ int main(){
 	for (i=0; i<5; i++){
 		printf("%d ", arr[i]);
 	}
-	printf("\n");
-	printf("Pleas enter the index of the element you want to delete: ");
+	printf("\nPleas enter the index of the element you want to delete: ");
 	scanf("%d", &index);
 	
+	//check the index is within array range
 	if ((index>5)||(index<1)){
 		printf("Not a valid index. Exiting ...");
 		exit(1);
 	}
+	//preparing the new array
 	x=0;
 	for (i=0; i<4; i++){
 		if (i== (index-1)){
