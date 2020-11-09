@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
-#define SIZE 50
+#include "STD_TYPES.h"
 
 typedef unsigned char u8;
 
@@ -14,6 +13,8 @@ int main(){
 	printf("signed long int = %d byte\n", sizeof(signed long int));
 	
 	u8 x=10;
+	s32 y=25;
 	printf("x = %d\n", x);
+	printf("y = %d\n", y);
 	return 0;
 }
