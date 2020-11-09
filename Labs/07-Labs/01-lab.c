@@ -16,6 +16,8 @@ int main(){
 		}
 		i++;
 	}
+	//make the new_arr a string instead of a list of charachters by adding the latest element
+	new_arr[j]='\0';
 	
 	printf("You entered %s: ", new_arr);
 	
