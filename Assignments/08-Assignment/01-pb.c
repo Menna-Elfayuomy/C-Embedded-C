@@ -23,5 +23,5 @@ void ArrSum(s32 arr[], s32 given_size, s32 *sumPtr){
 	s32 i;
 	for (i=0; i<given_size; i++){
 		*sumPtr = *sumPtr + arr[i];
-	}
+	} 
 }
