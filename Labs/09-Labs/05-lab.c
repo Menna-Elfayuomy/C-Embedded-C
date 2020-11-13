@@ -15,7 +15,13 @@ int main(){
 	printf("Please enter a selection between 1 to 3: ");
 	scanf("%d", &x);
 	
-	handleMenu (Arr[x-1], x);
+	if (x>0 & x<4){
+		handleMenu (Arr[x-1], x);
+	}
+	else{
+		printf("Not a valid option. Exiting....\n");
+		exit(1);
+	}
 	return 0;
 }
 
