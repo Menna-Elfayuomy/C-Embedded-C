@@ -4,8 +4,8 @@
 #define SIZE 30
 
 typedef union family_name{
-	u8 first_name[SIZE];
-	u8 last_name[SIZE];
+	char first_name[SIZE];
+	char last_name[SIZE];
 }family_t;
 
 int main(){
