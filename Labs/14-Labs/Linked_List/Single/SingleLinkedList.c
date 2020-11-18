@@ -14,10 +14,12 @@ s32 Search (Node_t* Start, s32 Val);
 Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
 void InsertAtEnd (Node_t* Start, s32 Data);
 Node_t* CreateList (Node_t* Start);
+void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data);
+
 
 int main()
 {
-	s32 var, Pos;;
+	s32 var, Pos, After;
 	Node_t* Start=NULL;
 	
 	//creating list
@@ -30,7 +32,14 @@ int main()
 	printf("\nenter a value to search for: ");
 	scanf("%d", &var);
 	Pos=Search(Start, var);
-	printf("\nElement position is %d", Pos);
+	printf("\nElement position is %d\n", Pos);
+	
+	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert after\n");
+	scanf("%d%d", &var, &After);
+	InsertAfter(Start, After, var);
+
+	DisplayList(Start);
+	
 	return 0;
 }
 
@@ -132,4 +141,31 @@ Node_t* CreateList (Node_t* Start)
 		InsertAtEnd(Start, var);
 	}
 	return Start;	
+}
+
+
+void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data)
+{
+	Node_t* ptr =Start;
+	//create new node
+	Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
+	Temp->Info = Data;
+	
+	while(ptr !=NULL)
+	{
+		if(ptr->Info==AfterVal)
+		{
+			break;
+		}
+		ptr=ptr->Link;
+	}
+	if (ptr==NULL){
+		printf("Warning the Value you entered doesn't exist in the array\n");
+		return;
+	}
+	else{
+		Temp->Link=ptr->Link;
+		ptr->Link=Temp;
+	}
+	
 }
