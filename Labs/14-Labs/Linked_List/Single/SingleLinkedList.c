@@ -10,6 +10,7 @@ typedef struct node
 
 void DisplayList (Node_t* Start);
 u32 CountListNodes (Node_t* Start);
+s32 Search (Node_t* Start, s32 Val);
 
 int main()
 {
@@ -39,4 +40,29 @@ u32 CountListNodes (Node_t* Start)
 		ptr=ptr->Link;
 	}
 	return counter;
+}
+
+s32 Search (Node_t* Start, s32 Val)
+{
+	Node_t* ptr =Start;
+	u32 position=0;
+	
+	while (ptr!=NULL)
+	{
+		if ((ptr->Info) == Val)
+		{
+			break;
+		}
+		ptr=ptr->Link;
+		position++;
+	}
+	if (ptr==NULL)
+	{
+		printf("Value %d doesn't exist in the list", Val);
+		return -1;
+	}
+	else
+	{
+		return position;
+	}
 }
