@@ -12,6 +12,7 @@ void DisplayList (Node_t* Start);
 u32 CountListNodes (Node_t* Start);
 s32 Search (Node_t* Start, s32 Val);
 Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
+void InsertAtEnd (Node_t* Start, s32 Data);
 
 int main()
 {
@@ -21,10 +22,14 @@ int main()
 	printf("Enter the number of list elements: ");
 	scanf("%d", &n);
 	
-	for(i=0; i<n; i++){
+	printf("Enter element number %d:	", i+1);
+	scanf("%d", &var);
+	Start =InsertAtBeginning(Start, var);
+
+	for(i=1; i<n; i++){
 		printf("Enter element number %d:	", i+1);
 		scanf("%d", &var);
-		Start =InsertAtBeginning(Start, var);
+		InsertAtEnd(Start, var);
 	}
 	
 	//display the list
@@ -96,4 +101,19 @@ Node_t* InsertAtBeginning (Node_t* Start, s32 Data){
 	Start = Temp;
 	//the start value must be returned as it's the 1st reference for the list and it has been changed
 	return Start;
+}
+
+void InsertAtEnd (Node_t* Start, s32 Data)
+{
+	Node_t* ptr =Start;
+	//create new node
+	Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
+	Temp->Info = Data;
+	
+	while(ptr->Link !=NULL)
+	{
+		ptr=ptr->Link;
+	}
+	ptr->Link=Temp;
+	Temp->Link=NULL;
 }
