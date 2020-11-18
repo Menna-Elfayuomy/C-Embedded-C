@@ -111,10 +111,16 @@ void InsertAtEnd (Node_t* Start, s32 Data)
 
 Node_t* CreateList (Node_t* Start)
 {
-	u32 n, i=0, var;
+	s32 n, i=0, var;
 	
 	printf("Enter the number of list elements: ");
 	scanf("%d", &n);
+	
+	while (n<=0){
+		printf("Invalid number for list size. Try again...");
+		printf("Enter the number of list elements: ");
+		scanf("%d", &n);
+	}
 	
 	printf("Enter element number %d:	", i+1);
 	scanf("%d", &var);
