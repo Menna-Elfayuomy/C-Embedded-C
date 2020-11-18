@@ -11,10 +11,30 @@ typedef struct node
 void DisplayList (Node_t* Start);
 u32 CountListNodes (Node_t* Start);
 s32 Search (Node_t* Start, s32 Val);
+Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
 
 int main()
 {
+	Node_t* Start=NULL;
+	u32 n, i=0, var, Pos;
 	
+	printf("Enter the number of list elements: ");
+	scanf("%d", &n);
+	
+	for(i=0; i<n; i++){
+		printf("Enter element number %d:	", i+1);
+		scanf("%d", &var);
+		Start =InsertAtBeginning(Start, var);
+	}
+	
+	//display the list
+	DisplayList(Start);
+	CountListNodes(Start);
+	
+	printf("\nenter a value to search for: ");
+	scanf("%d", &var);
+	Pos=Search(Start, var);
+	printf("\nElement position is %d", Pos);
 	return 0;
 }
 
@@ -65,4 +85,15 @@ s32 Search (Node_t* Start, s32 Val)
 	{
 		return position;
 	}
+}
+
+Node_t* InsertAtBeginning (Node_t* Start, s32 Data){
+	// create new node
+	Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
+	Temp->Info = Data;
+	//insert 
+	Temp->Link=Start;
+	Start = Temp;
+	//the start value must be returned as it's the 1st reference for the list and it has been changed
+	return Start;
 }
