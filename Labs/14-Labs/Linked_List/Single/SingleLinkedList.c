@@ -9,6 +9,7 @@ typedef struct node
 }Node_t;
 
 void DisplayList (Node_t* Start);
+u32 CountListNodes (Node_t* Start);
 
 int main()
 {
@@ -26,4 +27,16 @@ void DisplayList (Node_t* Start)
 		printf("%d\t", ptr->Info);
 		ptr=ptr->Link;
 	}
+}
+
+u32 CountListNodes (Node_t* Start)
+{
+	Node_t* ptr = Start;
+	u32 counter = 0;
+	while(ptr!=NULL)
+	{
+		counter++;
+		ptr=ptr->Link;
+	}
+	return counter;
 }
