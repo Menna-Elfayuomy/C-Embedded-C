@@ -13,24 +13,15 @@ u32 CountListNodes (Node_t* Start);
 s32 Search (Node_t* Start, s32 Val);
 Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
 void InsertAtEnd (Node_t* Start, s32 Data);
+Node_t* CreateList (Node_t* Start);
 
 int main()
 {
+	s32 var, Pos;;
 	Node_t* Start=NULL;
-	u32 n, i=0, var, Pos;
 	
-	printf("Enter the number of list elements: ");
-	scanf("%d", &n);
-	
-	printf("Enter element number %d:	", i+1);
-	scanf("%d", &var);
-	Start =InsertAtBeginning(Start, var);
-
-	for(i=1; i<n; i++){
-		printf("Enter element number %d:	", i+1);
-		scanf("%d", &var);
-		InsertAtEnd(Start, var);
-	}
+	//creating list
+	Start = CreateList (Start);
 	
 	//display the list
 	DisplayList(Start);
@@ -116,4 +107,23 @@ void InsertAtEnd (Node_t* Start, s32 Data)
 	}
 	ptr->Link=Temp;
 	Temp->Link=NULL;
+}
+
+Node_t* CreateList (Node_t* Start)
+{
+	u32 n, i=0, var;
+	
+	printf("Enter the number of list elements: ");
+	scanf("%d", &n);
+	
+	printf("Enter element number %d:	", i+1);
+	scanf("%d", &var);
+	Start =InsertAtBeginning(Start, var);
+
+	for(i=1; i<n; i++){
+		printf("Enter element number %d:	", i+1);
+		scanf("%d", &var);
+		InsertAtEnd(Start, var);
+	}
+	return Start;	
 }
