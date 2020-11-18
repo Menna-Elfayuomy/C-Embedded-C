@@ -16,11 +16,11 @@ void InsertAtEnd (Node_t* Start, s32 Data);
 Node_t* CreateList (Node_t* Start);
 void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data);
 Node_t* InsertBefore(Node_t* Start, s32 BeforeVal, s32 Data);
-
+Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data);
 
 int main()
 {
-	s32 var, Pos, After, Before;
+	s32 var, Pos, After, Before, pos;
 	Node_t* Start=NULL;
 	
 	//creating list
@@ -57,6 +57,14 @@ int main()
 	scanf("%d%d", &var, &Before);
 	
 	Start= InsertBefore(Start, Before, var);
+	DisplayList(Start);
+
+	printf("\nPlease enter the value you want to add: ");
+	scanf("%d", &var);
+	printf("Please enter the position where you want to add the value: ");
+	scanf("%d", &pos);
+	Start= InsertAtPosition(Start, pos-1, var);
+
 	DisplayList(Start);
 
 	return 0;
@@ -227,4 +235,32 @@ Node_t* InsertBefore(Node_t* Start, s32 BeforeVal, s32 Data)
 	}
 	
 	return Start;
+}
+
+Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data)
+{
+	Node_t* ptr =Start;
+	s32 i=0;
+	//check if the value to insert before is the first element
+	if (Position==0){
+		Start = InsertAtBeginning(Start, Data);
+		return Start;
+	}
+	for (i=1; i<Position-1 && ptr!=NULL; i++)
+	{
+		ptr=ptr->Link;
+	}
+	if (ptr==NULL){
+		printf("Invalid index\n");
+	}
+	else
+	{
+		//create new node
+		Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
+		Temp->Info = Data;
+
+		Temp->Link=ptr->Link;
+		ptr->Link=Temp;
+	}
+	return Start;	
 }
