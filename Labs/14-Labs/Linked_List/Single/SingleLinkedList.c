@@ -15,11 +15,12 @@ Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
 void InsertAtEnd (Node_t* Start, s32 Data);
 Node_t* CreateList (Node_t* Start);
 void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data);
+Node_t* InsertBefore(Node_t* Start, s32 BeforeVal, s32 Data);
 
 
 int main()
 {
-	s32 var, Pos, After;
+	s32 var, Pos, After, Before;
 	Node_t* Start=NULL;
 	
 	//creating list
@@ -40,6 +41,24 @@ int main()
 
 	DisplayList(Start);
 	
+	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert before\n");
+	scanf("%d%d", &var, &Before);
+	
+	Start= InsertBefore(Start, Before, var);
+	DisplayList(Start);
+
+	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert before\n");
+	scanf("%d%d", &var, &Before);
+	
+	Start= InsertBefore(Start, Before, var);
+	DisplayList(Start);
+
+	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert before\n");
+	scanf("%d%d", &var, &Before);
+	
+	Start= InsertBefore(Start, Before, var);
+	DisplayList(Start);
+
 	return 0;
 }
 
@@ -147,9 +166,6 @@ Node_t* CreateList (Node_t* Start)
 void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data)
 {
 	Node_t* ptr =Start;
-	//create new node
-	Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
-	Temp->Info = Data;
 	
 	while(ptr !=NULL)
 	{
@@ -164,8 +180,51 @@ void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data)
 		return;
 	}
 	else{
+		//create new node
+		/* not recommended to allocate at the beginning of the function as if we couldn't find the value after which we are going to insert the new value. 
+		*/
+		Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
+		Temp->Info = Data;
+
 		Temp->Link=ptr->Link;
 		ptr->Link=Temp;
+	}	
+}
+
+Node_t* InsertBefore(Node_t* Start, s32 BeforeVal, s32 Data)
+{
+	Node_t* ptr =Start;
+	// check if list is empty
+	if (Start==NULL){
+		printf("Empty list");
+		return Start;
+	}
+	//check if the value to insert before is the first element
+	if (Start->Info == BeforeVal){
+		Start = InsertAtBeginning(Start, Data);
+		return Start;
+	}
+	else{
+		while(ptr->Link !=NULL)
+		{
+			if((ptr->Link)->Info==BeforeVal)
+			{
+				break;
+			}
+			ptr=ptr->Link;
+		}
+		if (ptr->Link==NULL){
+			printf("Warning the Value you entered doesn't exist in the array\n");
+		}
+		else{
+			//create new node
+			Node_t* Temp=(Node_t*)malloc(sizeof(Node_t));
+			Temp->Info = Data;
+
+			Temp->Link=ptr->Link;
+			ptr->Link=Temp;
+		}			
 	}
 	
+	return Start;
 }
