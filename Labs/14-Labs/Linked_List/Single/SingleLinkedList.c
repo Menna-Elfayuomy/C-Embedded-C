@@ -17,6 +17,7 @@ Node_t* CreateList (Node_t* Start);
 void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data);
 Node_t* InsertBefore(Node_t* Start, s32 BeforeVal, s32 Data);
 Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data);
+Node_t* DeleteNode(Node_t* Start, s32 x);
 
 int main()
 {
@@ -29,7 +30,7 @@ int main()
 	//display the list
 	DisplayList(Start);
 	CountListNodes(Start);
-	
+	/*
 	printf("\nenter a value to search for: ");
 	scanf("%d", &var);
 	Pos=Search(Start, var);
@@ -65,6 +66,12 @@ int main()
 	scanf("%d", &pos);
 	Start= InsertAtPosition(Start, pos-1, var);
 
+	DisplayList(Start);
+
+	*/
+	printf("\nPlease enter a value you want to delete from the list: ");
+	scanf("%d", &var);
+	Start= DeleteNode(Start, var);
 	DisplayList(Start);
 
 	return 0;
@@ -263,4 +270,45 @@ Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data)
 		ptr->Link=Temp;
 	}
 	return Start;	
+}
+
+Node_t* DeleteNode(Node_t* Start, s32 x)
+{
+	Node_t* ptr =Start, * Temp =Start;
+
+	if (Start==NULL)
+	{
+		printf("List is empty. No elements to be deleted\n");
+		return Start;
+	}
+	// deleting 1st node or the only existing node in the list
+	if (ptr->Info == x)
+	{
+		Start=Start->Link;
+		return Start;
+	}
+	
+	//delete in between or delete the last node
+	while(ptr->Link != NULL)
+	{
+		if ((ptr->Link)->Info == x)
+		{
+			break;
+		}
+		ptr=ptr->Link;
+	}
+	
+	// check if you didn't find the value to be deleted in the list
+	if (ptr->Link == NULL)
+	{
+		printf("The value you want to delete doesn't exist in the list :P\n");
+	}
+	else
+	{
+		Temp = ptr->Link;
+		ptr->Link = Temp->Link;
+		free (Temp);		
+	}
+	
+	return Start;
 }
