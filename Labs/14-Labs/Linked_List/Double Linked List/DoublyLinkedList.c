@@ -55,7 +55,7 @@ void InsertAtEnd (DNode_t* Start, int Data)
 	
 	Temp->Info=Data;
 	Temp->next=NULL;
-	while (ptr!=NULL)
+	while (ptr->next!=NULL)
 	{
 		ptr=ptr->next;
 	}
@@ -63,7 +63,7 @@ void InsertAtEnd (DNode_t* Start, int Data)
 	ptr->next=Temp;
 }
 
-DNode_t* CreateList (DNode_t* Start)
+DNode_t* CreateDoubleList (DNode_t* Start)
 {
 	int n, i=0, var;
 	
@@ -78,7 +78,7 @@ DNode_t* CreateList (DNode_t* Start)
 	
 	printf("Enter element number %d:	", i+1);
 	scanf("%d", &var);
-	Start =InsertAtBeginning(Start, var);
+	Start =InsertInEmpty(Start, var);
 
 	for(i=1; i<n; i++){
 		printf("Enter element number %d:	", i+1);
