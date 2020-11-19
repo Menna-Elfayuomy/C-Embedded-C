@@ -45,8 +45,23 @@ DNode_t* InsertInEmpty (DNode_t* Start, int Data)
 	
 	Start=Temp;
 	
-	return Start;
-	
+	return Start;	
 }
+
+void InsertAtEnd (DNode_t* Start, int Data)
+{
+	DNode_t* Temp= (DNode_t*)malloc(sizeof(DNode_t));
+	DNode_t* ptr = Start;
+	
+	Temp->Info=Data;
+	Temp->next=NULL;
+	while (ptr!=NULL)
+	{
+		ptr=ptr->next;
+	}
+	Temp->prev=ptr;
+	ptr->next=Temp;
+}
+
 
 
