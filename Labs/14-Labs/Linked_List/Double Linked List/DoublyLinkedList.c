@@ -63,5 +63,28 @@ void InsertAtEnd (DNode_t* Start, int Data)
 	ptr->next=Temp;
 }
 
+DNode_t* CreateList (DNode_t* Start)
+{
+	int n, i=0, var;
+	
+	printf("Enter the number of list elements: ");
+	scanf("%d", &n);
+	
+	while (n<=0){
+		printf("Invalid number for list size. Try again...");
+		printf("Enter the number of list elements: ");
+		scanf("%d", &n);
+	}
+	
+	printf("Enter element number %d:	", i+1);
+	scanf("%d", &var);
+	Start =InsertAtBeginning(Start, var);
 
+	for(i=1; i<n; i++){
+		printf("Enter element number %d:	", i+1);
+		scanf("%d", &var);
+		InsertAtEnd(Start, var);
+	}
+	return Start;	
+}
 
