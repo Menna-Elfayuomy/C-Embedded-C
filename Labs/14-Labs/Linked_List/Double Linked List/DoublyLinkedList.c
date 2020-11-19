@@ -35,3 +35,18 @@ DNode_t* InsertAtBeginning (DNode_t* Start, int Data)
 	return Start;
 }
 
+DNode_t* InsertInEmpty (DNode_t* Start, int Data)
+{
+	DNode_t* Temp= (DNode_t*)malloc(sizeof(DNode_t));
+	
+	Temp->Info=Data;
+	Temp->next=NULL;
+	Temp->prev=NULL;
+	
+	Start=Temp;
+	
+	return Start;
+	
+}
+
+
