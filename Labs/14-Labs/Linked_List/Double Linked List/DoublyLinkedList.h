@@ -9,5 +9,6 @@ typedef struct node
 }DNode_t;
 
 void DisplayDoubleList (DNode_t* Start);
+DNode_t* InsertAtBeginning (DNode_t* Start, int Data);
 
 #endif

@@ -20,3 +20,18 @@ void DisplayDoubleList (DNode_t* Start)
 	}
 	printf("\n");
 }
+
+DNode_t* InsertAtBeginning (DNode_t* Start, int Data)
+{
+	DNode_t* Temp= (DNode_t*)malloc(sizeof(DNode_t));
+	
+	Temp->Info=Data;
+	Temp->next=Start;
+	Temp->prev=NULL;
+	
+	Start->prev = Temp;
+	Start=Temp;
+	
+	return Start;
+}
+
