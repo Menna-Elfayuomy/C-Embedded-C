@@ -246,7 +246,7 @@ Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data)
 		Start = InsertAtBeginning(Start, Data);
 		return Start;
 	}
-	for (i=1; i<Position && ptr!=NULL; i++)
+	for (i=1; i<Position-1 && ptr!=NULL; i++)
 	{
 		ptr=ptr->Link;
 	}
