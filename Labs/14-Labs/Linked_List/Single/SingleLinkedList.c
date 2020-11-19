@@ -1,87 +1,8 @@
 #include <stdio.h>
 #include "D:\NTI\C_projects\Labs\07-Labs\STD_TYPES.h"
 #include <stdlib.h>
+#include "SingleLinkedList.h"
 
-typedef struct node
-{
-	int Info;
-	struct node* Link;
-}Node_t;
-
-void DisplayList (Node_t* Start);
-u32 CountListNodes (Node_t* Start);
-s32 Search (Node_t* Start, s32 Val);
-Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
-void InsertAtEnd (Node_t* Start, s32 Data);
-Node_t* CreateList (Node_t* Start);
-void InsertAfter(Node_t* Start, s32 AfterVal, s32 Data);
-Node_t* InsertBefore(Node_t* Start, s32 BeforeVal, s32 Data);
-Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data);
-Node_t* DeleteNode(Node_t* Start, s32 x);
-Node_t* ReverseList (Node_t* Start);
-
-int main()
-{
-	s32 var, Pos, After, Before, pos;
-	Node_t* Start=NULL;
-	
-	//creating list
-	Start = CreateList (Start);
-	
-	//display the list
-	DisplayList(Start);
-	CountListNodes(Start);
-	/*
-	printf("\nenter a value to search for: ");
-	scanf("%d", &var);
-	Pos=Search(Start, var);
-	printf("\nElement position is %d\n", Pos);
-	
-	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert after\n");
-	scanf("%d%d", &var, &After);
-	InsertAfter(Start, After, var);
-
-	DisplayList(Start);
-	
-	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert before\n");
-	scanf("%d%d", &var, &Before);
-	
-	Start= InsertBefore(Start, Before, var);
-	DisplayList(Start);
-
-	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert before\n");
-	scanf("%d%d", &var, &Before);
-	
-	Start= InsertBefore(Start, Before, var);
-	DisplayList(Start);
-
-	printf("\nPlease enter a value you want to insert in the array then enter the value where you want to insert before\n");
-	scanf("%d%d", &var, &Before);
-	
-	Start= InsertBefore(Start, Before, var);
-	DisplayList(Start);
-
-	printf("\nPlease enter the value you want to add: ");
-	scanf("%d", &var);
-	printf("Please enter the position where you want to add the value: ");
-	scanf("%d", &pos);
-	Start= InsertAtPosition(Start, pos-1, var);
-
-	DisplayList(Start);
-	
-	printf("\nPlease enter a value you want to delete from the list: ");
-	scanf("%d", &var);
-	Start= DeleteNode(Start, var);
-	DisplayList(Start);
-
-	*/
-	
-	Start= ReverseList (Start);
-	printf("\n");
-	DisplayList(Start);
-
-	return 0;
-}
 
 void DisplayList (Node_t* Start)
 {
