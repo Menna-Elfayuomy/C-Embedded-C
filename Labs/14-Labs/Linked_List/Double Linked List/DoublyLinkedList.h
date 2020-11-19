@@ -13,5 +13,6 @@ DNode_t* InsertAtBeginning (DNode_t* Start, int Data);
 DNode_t* InsertInEmpty (DNode_t* Start, int Data);
 void InsertAtEnd (DNode_t* Start, int Data);
 DNode_t* CreateDoubleList (DNode_t* Start);
+void InsertAfter (DNode_t* Start, int AfterVal, int Data);
 
 #endif

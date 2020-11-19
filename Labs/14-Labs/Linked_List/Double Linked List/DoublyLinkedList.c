@@ -88,3 +88,36 @@ DNode_t* CreateDoubleList (DNode_t* Start)
 	return Start;	
 }
 
+void InsertAfter (DNode_t* Start, int AfterVal, int Data)
+{
+	DNode_t* Temp= (DNode_t*)malloc(sizeof(DNode_t));
+	DNode_t* ptr = Start;
+
+	while(ptr!=NULL)
+	{
+		if (ptr->Info == AfterVal)
+		{
+			break;
+		}
+		ptr=ptr->next;
+	}
+	
+	if(ptr==NULL)
+	{
+		printf("Warning the Value you entered doesn't exist in the array\n");
+		return;
+	}
+	Temp->Info=Data;
+	Temp->prev=ptr;
+	Temp->next=ptr->next;
+	
+	if (ptr->next !=NULL)
+	{
+		ptr->next->prev= Temp;
+	}
+	else
+	{
+		ptr->next=NULL;
+	}
+	ptr->next= Temp;
+}
