@@ -1,27 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../MyLibraries/STD_TYPES.h"
+#include "../../../MyLibraries/STD_TYPES.h"
 #include "CircularList.h"
 
 
-//Display function
-void DisplayCircularList(CNode_t* Last)
+
+CNode_t* InsertAtEmpty (s32 Data)
 {
-	// check if the list is empty
-	if (Last == NULL)
+	// for the empty list the 1st element is the same as the latest element
+	CNode_t* Last = (CNode_t*)malloc(sizeof(CNode_t));
+	Last->Info = Data;
+	//point to itself
+	Last->Link = Last;
+	return Last;
+}
+
+
+void InsertAtBeginning (CNode_t* Last, s32 Data)
+{
+	// check if the given list is empty
+	if (Last ==NULL)
 	{
-		printf("List is empty.. Nothing to be printed\n");
+		printf("Warning!! the given list is totaly empty :| use function InsertInEmpty instead \n");
 		return ;
 	}
+	
 	CNode_t* ptr = Last->Link;
-	printf("The List is: \n");
-	do
-	{
-		printf("%d\t", ptr->Info);
-		ptr = ptr->Link;	
-	}while (ptr!= Last->Link);
-	printf("\n");
+	// initialize a temp pointer to be the new first element in the list
+	CNode_t* Temp = (CNode_t*)malloc(sizeof(CNode_t));
+	Temp->Info = Data;
+	Temp->Link = ptr;
+	
+	Last->Link = Temp;
 }
+
+
+// add element at the end of a cicular list
+CNode_t* InsertAtEnd (CNode_t* Last, s32 Data)
+{
+		// check if the given list is empty
+	if (Last ==NULL)
+	{
+		printf("Warning!! the given list is totaly empty :| use function InsertInEmpty instead \n");
+		return Last;
+	}
+
+	//otherwise
+	CNode_t* ptr = Last;
+	CNode_t* Temp = (CNode_t*)malloc(sizeof(CNode_t));
+	Temp->Info = Data;
+	Temp->Link = ptr->Link;
+	ptr->Link = Temp;
+	
+	Last = Temp;
+	return Last;
+}
+
 
 //creating a cicular list
 CNode_t* CreateCircularList ()
@@ -52,54 +86,6 @@ CNode_t* CreateCircularList ()
 	return Last;
 }
 
-void InsertAtBeginning (CNode_t* Last, s32 Data)
-{
-	// check if the given list is empty
-	if (Last ==NULL)
-	{
-		printf("Warning!! the given list is totaly empty :| use function InsertInEmpty instead \n");
-	}
-	
-	CNode_t* ptr = Last->Link;
-	// initialize a temp pointer to be the new first element in the list
-	CNode_t* Temp = (CNode_t*)malloc(sizeof(CNode_t));
-	Temp->Info = Data;
-	Temp->Link = ptr;
-	
-	Last->Link = Temp;
-}
-
-CNode_t* InsertAtEmpty (s32 Data)
-{
-	// for the empty list the 1st element is the same as the latest element
-	CNode_t* Last = (CNode_t*)malloc(sizeof(CNode_t));
-	Last->Info = Data;
-	//point to itself
-	Last->Link = Last;
-	return Last;
-}
-
-
-// add element at the end of a cicular list
-CNode_t* InsertAtEnd (CNode_t* Last, s32 Data)
-{
-		// check if the given list is empty
-	if (Last ==NULL)
-	{
-		printf("Warning!! the given list is totaly empty :| use function InsertInEmpty instead \n");
-		return Last;
-	}
-
-	//otherwise
-	CNode_t* ptr = Last;
-	CNode_t* Temp = (CNode_t*)malloc(sizeof(CNode_t));
-	Temp->Info = Data;
-	Temp->Link = ptr->Link;
-	ptr->Link = Temp;
-	
-	Last = Temp;
-	return Last;
-}
 
 CNode_t* InsertAfter (CNode_t* Last, s32 AfterVal ,s32 Data)
 {
@@ -141,6 +127,7 @@ CNode_t* InsertAfter (CNode_t* Last, s32 AfterVal ,s32 Data)
 	return Last;
 }
 
+
 void InsertBefore (CNode_t* Last, s32 BeforeVal, s32 Data)
 {
 	// check if the passed list is empty
@@ -179,4 +166,24 @@ void InsertBefore (CNode_t* Last, s32 BeforeVal, s32 Data)
 	Temp->Link = ptr->Link;
 	
 	ptr->Link = Temp;
+}
+
+
+//Display function
+void DisplayCircularList(CNode_t* Last)
+{
+	// check if the list is empty
+	if (Last == NULL)
+	{
+		printf("List is empty.. Nothing to be printed\n");
+		return ;
+	}
+	CNode_t* ptr = Last->Link;
+	printf("The List is: \n");
+	do
+	{
+		printf("%d\t", ptr->Info);
+		ptr = ptr->Link;	
+	}while (ptr!= Last->Link);
+	printf("\n");
 }
