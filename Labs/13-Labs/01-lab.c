@@ -43,7 +43,6 @@ void Merge_Sorted_Parts (s32 arr[], s32 low1, s32 up1, s32 low2, s32 up2){
 	}
 	
 	while(i<=up1){
-		printf("here\n");
 		merged_parts[k]=arr[i];
 		i++;
 		k++;
@@ -55,7 +54,7 @@ void Merge_Sorted_Parts (s32 arr[], s32 low1, s32 up1, s32 low2, s32 up2){
 		k++;
 	}
 	
-	for (i=low1; i<up2; i++){
+	for (i=low1; i<s; i++){
 		arr[i]=merged_parts[i];
 	}
 }
