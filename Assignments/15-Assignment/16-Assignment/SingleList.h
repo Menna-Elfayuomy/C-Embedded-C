@@ -8,7 +8,6 @@ typedef struct node
 }Node_t;
 
 Node_t* InsertAtBeginning (Node_t* Start, s32 Data);
-
 void DisplayList (Node_t* Start);
 u32 CountListNodes (Node_t* Start);
 s32 Search (Node_t* Start, s32 Val);
@@ -21,5 +20,6 @@ Node_t* DeleteNode(Node_t* Start, s32 x);
 Node_t* ReverseList (Node_t* Start);
 Node_t* InsertInSorted (Node_t* Start, s32 Data);
 s32 SortChecker(Node_t* Start);
+Node_t* MergingLists (Node_t* Start1, Node_t* Start2);
 
 #endif

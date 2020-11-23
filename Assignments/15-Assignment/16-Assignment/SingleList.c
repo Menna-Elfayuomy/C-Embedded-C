@@ -339,3 +339,69 @@ s32 SortChecker(Node_t* Start)
 	}
 	return 0;
 }
+
+Node_t* MergingLists (Node_t* Start1, Node_t* Start2)
+{
+	Node_t* ptr1 = Start1, * ptr2 = Start2, *Start3 = NULL;
+	//check if both lists are empty
+	if ((Start1==0) && (Start2==0))
+	{
+		printf("Both lists are empty! where is the data to be merged?\n");
+		return Start3;
+	}
+	Node_t* Temp = (Node_t*)malloc(sizeof(Node_t));
+	Temp->Link = Start3;
+
+	while((ptr1->Link!= NULL) && (ptr2->Link!=NULL))
+	{
+		if (ptr1->Info <= ptr2->Info)
+		{
+			if (Start3 == NULL)
+			{
+				Start3 = InsertAtBeginning (Start3, ptr1->Info);
+			}
+			else{
+				InsertAtEnd (Start3, ptr1->Info);
+			}
+			ptr1= ptr1->Link;
+		}
+		
+		if (ptr1->Info > ptr2->Info)
+		{
+			if (Start3 == NULL)
+			{
+				Start3 = InsertAtBeginning (Start3, ptr2->Info);
+			}
+			else
+			{
+				InsertAtEnd (Start3, ptr2->Info);
+			}
+			ptr2= ptr2->Link;
+		}
+	}
+	while (ptr1!= NULL)
+	{
+		if (Start3 == NULL)
+			{
+				Start3 = InsertAtBeginning (Start3, ptr1->Info);
+			}
+			else
+			{
+				InsertAtEnd (Start3, ptr1->Info);
+			}
+		ptr1=ptr1->Link;
+	}
+	while (ptr2!=NULL)
+	{
+		if (Start3 == NULL)
+		{
+			Start3 = InsertAtBeginning (Start3, ptr2->Info);
+		}
+		else
+		{
+			InsertAtEnd (Start3, ptr2->Info);
+		}
+		ptr2=ptr2->Link;
+	}
+	return Start3;
+}
