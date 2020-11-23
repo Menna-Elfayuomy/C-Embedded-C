@@ -7,7 +7,7 @@
 
 int main()
 {
-	CNode_t* Last = NULL;
+	CNode_t* Last = NULL, *Last1 = NULL, *Last2 = NULL;
 	s32 var, certainValue, selection; 
 	char x;
 	char *welcome = "Hey Mr/Miss :D\n"
@@ -21,7 +21,9 @@ int main()
 						"4 CreatCircularList:\t that function creates a list by calling function #1 and #3\n"
 						"5 InsertAfter:\t\t adds a value after a certain value already exists in the list\n"
 						"6 InsertBefore:\t\t adds a value before a certain value already exists in the list\n"
-						"7 DisplayCircularList:\t to print out the values of the list\n\n"
+						"7 ConcatenateLists:\t to concatenate 2 circular lists\n"
+						"8 DeleteNode:\t\t to delete a value in the list\n"
+						"9 DisplayCircularList:\t to print out the values of the list\n\n"
 						"Please enter a number equivalent to the function you want to use or enter 0 to quit\n"; 
 	
 	printf("%s", welcome);
@@ -70,6 +72,20 @@ int main()
 				InsertBefore(Last, certainValue, var);
 				break;
 			case 7:
+				printf("Calling function ConcatenateLists\n");
+				printf("Creating 1st list\n");
+				Last1 = CreateCircularList();
+				printf("Creating 2nd list\n");
+				Last2 = CreateCircularList();
+				Last = ConcatenateLists (Last1, Last2);
+				break;
+			case 8:
+				printf("Calling functin DeleteNode\n");
+				printf("Please enter a value to be deleted: ");
+				scanf ("%d", &var);
+				Last = DeleteNode (Last, var);
+				break;
+			case 9:
 				printf("Calling function DisplayCirculatList\n");
 				DisplayCircularList(Last);
 				break;

@@ -168,6 +168,86 @@ void InsertBefore (CNode_t* Last, s32 BeforeVal, s32 Data)
 	ptr->Link = Temp;
 }
 
+// delete node
+CNode_t* DeleteNode (CNode_t* Last, s32 Data)
+{
+	// check if the given list is already empty
+	if (Last == NULL)
+	{
+		printf("OH! the given list is totaly empty \nNo deletion effort needed\n");
+		return Last;
+	}
+	//check if it's the only existing element
+	if ((Last == Last->Link) && (Last->Info == Data))
+	{
+		Last=NULL;
+		return Last;
+	}
+	// check if the value is the latest element 
+	// check if the value is in between
+	// check if the value doesn't exist
+	
+	
+	CNode_t* ptr = Last->Link;
+	//check if the value to be deleted is the 1st value
+	if (Last->Link->Info == Data)
+	{
+		Last->Link = ptr->Link;
+		free(ptr);
+		return Last;
+	}
+
+	do 
+	{
+		if (ptr->Link->Info == Data)
+		{
+			break;
+		}
+		ptr = ptr->Link;
+	}while (ptr != Last->Link);
+	
+	// check if data to be deleted is the latest element
+	if (ptr->Link == Last)
+	{
+		printf("Removing latest\n");
+		CNode_t* Temp = Last->Link;
+		Last = ptr;
+		ptr->Link = Temp;
+		free(Temp);
+		return Last;
+	}
+	
+	// check if the value doesn't exist in the list
+	if (ptr == Last->Link)
+	{
+		printf("That value doesn't exist in the list\n");
+		return Last;
+	}
+	printf("didn't come here\n");
+	//other wise the value to be deleted is inbetween
+	CNode_t* Temp = ptr->Link;
+	ptr->Link = Temp->Link;
+	free(Temp);
+	return Last;
+}
+
+// Concatenate two lists
+CNode_t* ConcatenateLists (CNode_t* Last1, CNode_t* Last2)
+{
+	// check if any of the lists or both is empty
+	if ((Last1 == NULL) || (Last2 == NULL))
+	{
+		printf("One of the given lists is empty or maybe both. You need two lists with one element in each at least\ntry using CreateCircularList function\n");
+		CNode_t* Last = (Last1==NULL)? Last1:Last2;
+		return Last;
+	}
+	
+	//otherwise
+	CNode_t* Temp = Last1->Link;
+	Last1->Link = Last2->Link;
+	Last2->Link = Temp;
+	return Last2;
+}
 
 //Display function
 void DisplayCircularList(CNode_t* Last)

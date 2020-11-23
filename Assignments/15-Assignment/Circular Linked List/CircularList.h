@@ -15,6 +15,8 @@ CNode_t* InsertAtEnd (CNode_t* Last, s32 Data);
 CNode_t* CreateCircularList ();
 CNode_t* InsertAfter (CNode_t* Last, s32 AfterVal ,s32 Data);
 void InsertBefore (CNode_t* Last, s32 BeforeVal, s32 Data);
+CNode_t* ConcatenateLists (CNode_t* Last1, CNode_t* Last2);
+CNode_t* DeleteNode (CNode_t* Last, s32 Data);
 void DisplayCircularList(CNode_t* Last);
 
 #endif
