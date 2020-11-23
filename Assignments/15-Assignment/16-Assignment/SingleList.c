@@ -305,3 +305,37 @@ Node_t* InsertInSorted (Node_t* Start, s32 Data)
 	return Start;
 	
 }
+
+s32 SortChecker(Node_t* Start)
+{
+	Node_t* ptr = Start;
+	s32 flag1=0, flag2=0;
+	// check ascending sorting
+	while(ptr->Link!=NULL)
+	{
+		if (ptr->Info > ptr->Link->Info)
+		{
+			flag1=1;
+			break;
+		}
+		ptr=ptr->Link;
+	}
+	//check Descending order
+	if (flag1==1){
+		ptr=Start;
+		while(ptr->Link!=NULL)
+		{
+			if (ptr->Info < ptr->Link->Info)
+			{
+				flag2=1;
+				break;
+			}
+			ptr=ptr->Link;
+		}
+	}
+	if((flag1 == 1) && (flag2 == 1))
+	{
+		return 1;
+	}
+	return 0;
+}

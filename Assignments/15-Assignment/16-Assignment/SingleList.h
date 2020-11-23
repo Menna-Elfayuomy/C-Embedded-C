@@ -20,5 +20,6 @@ Node_t* InsertAtPosition(Node_t* Start, s32 Position, s32 Data);
 Node_t* DeleteNode(Node_t* Start, s32 x);
 Node_t* ReverseList (Node_t* Start);
 Node_t* InsertInSorted (Node_t* Start, s32 Data);
+s32 SortChecker(Node_t* Start);
 
 #endif
