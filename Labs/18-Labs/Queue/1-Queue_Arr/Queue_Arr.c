@@ -67,6 +67,7 @@ u8 Queue_Insert(s32 Data)
 	return ErrorState;
 }
 
+/*
 u8 Queue_Delete(s32* DataPtr)
 {
 	u8 ErrorState = OK;
@@ -86,6 +87,39 @@ u8 Queue_Delete(s32* DataPtr)
 	}
 	return ErrorState;
 }
+*/
+
+//new delete function
+u8 Queue_Delete(s32* DataPtr)
+{
+	u8 ErrorState = OK;
+	u32 i;
+	if (DataPtr == NULL)
+	{
+		ErrorState = NOK;
+	}
+	else if (Queue_IsEmpty())
+	{
+		printf("Queue is already empty, deletion will result in underflow\n\n");
+		ErrorState=NOK;
+	}
+	else
+	{
+		*DataPtr = Arr[Front];
+		//shift the rest of the array to occupy the new free space
+		//check that it's not the only existing element
+		if (Rear > 0)
+		{
+			for (i=1; i<=Rear; i++)
+			{
+				Arr[i-1]=Arr[i];
+			}	
+		}
+		Rear--;
+	}
+	return ErrorState;
+}
+
 
 u8 Queue_Peek(s32* DataPtr)
 {
