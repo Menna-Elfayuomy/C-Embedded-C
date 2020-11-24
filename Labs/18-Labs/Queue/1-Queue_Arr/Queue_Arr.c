@@ -3,7 +3,7 @@
 #include "../../../../MyLibraries/STD_TYPES.h"
 #include "Queue_Arr.h"
 
-#define Max		50
+#define Max		3
 
 //global variables and are set to be internal linkage with the word static
 static s32 Arr[Max];
@@ -89,6 +89,7 @@ u8 Queue_Delete(s32* DataPtr)
 }
 */
 
+
 //new delete function
 u8 Queue_Delete(s32* DataPtr)
 {
@@ -119,6 +120,7 @@ u8 Queue_Delete(s32* DataPtr)
 	}
 	return ErrorState;
 }
+
 
 
 u8 Queue_Peek(s32* DataPtr)
