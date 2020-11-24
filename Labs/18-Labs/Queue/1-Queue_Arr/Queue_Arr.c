@@ -3,7 +3,8 @@
 #include "../../../../MyLibraries/STD_TYPES.h"
 #include "Queue_Arr.h"
 
-#define Max		3
+//#define Max		3
+#define Max 	50
 
 //global variables and are set to be internal linkage with the word static
 static s32 Arr[Max];

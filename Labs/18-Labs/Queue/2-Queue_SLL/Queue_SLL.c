@@ -53,12 +53,12 @@ u8 Queue_Insert(s32 Data)
 	}
 	else
 	{
-		if (Front=NULL)
+		if (Front==NULL)
 		{
 			//check if only node
-			Front = Temp;
 			Temp->Info = Data;
 			Temp->Link = NULL;
+			Front = Temp;
 			Rear = Temp;
 		}
 		else
