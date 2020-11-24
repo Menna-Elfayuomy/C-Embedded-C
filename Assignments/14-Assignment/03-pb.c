@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 
-
 typedef struct node
 {
 	s32 Info;
@@ -23,7 +22,7 @@ int main()
 	Node_t* Start=NULL;
 	Start= CreateList (Start);
 	max = MaxListNodes(Start);
-	printf("The sum of the list elements = %d\n", max);
+	printf("The max of the list elements = %d\n", max);
 	return 0;
 }
 
