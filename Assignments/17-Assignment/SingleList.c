@@ -462,47 +462,46 @@ Node_t* BubbleSorting (Node_t* Start)
 {
 	u32 n, i, y;
 	n = CountListNodes (Start);
-	printf("%d\n", n);
-	Node_t* ptr1 = Start, * ptr2 = ptr1->Link, *Temp=NULL;
+	Node_t* prev = Start, * ptr = Start, * next=ptr->Link;
 	
-	for (i=0; i<n-1; i++)
+	for (i=0; i<=n-2; i++)
 	{
-		ptr1 = Start;
-		ptr2 = ptr1->Link;
-		// for the 1st element
-		if ((i==0) && (ptr1->Info >ptr2->Info))
+		prev = Start;
+		ptr = Start;
+		next = ptr->Link;
+		
+		for (y=0; y<=n-i-2; y++)
 		{
-			//swap both elements
-			ptr1->Link = ptr2->Link;
-			ptr2->Link = Start;
-			Start = ptr2;
-			Temp = ptr2;
-			ptr2 = ptr1->Link;
-		}
-		else if((i==0) && (ptr1->Info <= ptr2->Info))
-		{
-			Temp=ptr1;
-			ptr1=ptr2;
-			ptr2=ptr2->Link;
-		}
-		for (y=1; y<n-2-i; y++)
-		{
-			if (ptr1->Info > ptr2->Info)
+			if (ptr->Info > next->Info)
 			{
-				// swap the elements
-				ptr1->Link = ptr2->Link;
-				ptr2->Link = ptr1;
-				Temp->Link = ptr2;
-				//step forward
-				Temp = ptr2;
-				ptr2 = ptr1->Link;
+				//either it's the 1st element or not
+				if (y==0)
+				{
+					//swapping
+					ptr->Link = next->Link;
+					next->Link = ptr;
+					Start = next;
+					//transpose
+					prev = next;
+					next = ptr->Link;
+				}
+				else
+				{
+					//swap
+					ptr->Link = next->Link;
+					next->Link = ptr;
+					prev->Link = next;
+					//transpose
+					prev = next;
+					next = ptr->Link;
+				}
 			}
 			else
 			{
-				// no swapping is needed
-				Temp=ptr1;
-				ptr1=ptr2;
-				ptr2=ptr2->Link;
+				// no swapping is needed just transpose
+				prev = ptr;
+				ptr = next;
+				next = next->Link;
 			}
 		}
 	}
