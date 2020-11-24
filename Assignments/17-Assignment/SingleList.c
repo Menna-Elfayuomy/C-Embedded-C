@@ -402,9 +402,9 @@ Node_t* MergingLists (Node_t* Start1, Node_t* Start2)
 		return Start3;
 	}
 	Node_t* Temp = (Node_t*)malloc(sizeof(Node_t));
-	Temp->Link = Start3;
+	Temp = Start3;
 
-	while((ptr1->Link!= NULL) && (ptr2->Link!=NULL))
+	while((ptr1!= NULL) && (ptr2!=NULL))
 	{
 		if (ptr1->Info <= ptr2->Info)
 		{
@@ -417,8 +417,7 @@ Node_t* MergingLists (Node_t* Start1, Node_t* Start2)
 			}
 			ptr1= ptr1->Link;
 		}
-		
-		if (ptr1->Info > ptr2->Info)
+		else if (ptr1->Info > ptr2->Info)
 		{
 			if (Start3 == NULL)
 			{
