@@ -31,7 +31,7 @@ u8 Queue_IsEmpty(void)
 u8 Queue_IsFull(void)
 {
 	u8 ErrorState = OK;
-	if (((Front==0)&&(Rear==Max-1)) || (Front==Rear+1))
+	if ((Front==0 && Rear==Max-1) || (Front==Rear+1))
 	{
 		printf ("Queue is full\n\n");
 	}		
@@ -49,11 +49,11 @@ u32 Queue_GetSize(void)
 	}
 	else if (Front<= Rear)
 	{
-		return Rear-Front+1;
+		return (Rear-Front+1);
 	}
 	else if (Rear<Front)
 	{
-		return Max-Front-Rear+1;
+		return (Max-Front-Rear+1);
 	}
 }
 
@@ -73,7 +73,7 @@ u8 Queue_Insert(s32 Data)
 			Front=0;
 			Rear=0;
 		}
-		if (Rear == Max-1)
+		else if (Rear == Max-1)
 		{
 			Rear=0;
 		}
@@ -108,6 +108,10 @@ u8 Queue_Delete(s32* DataPtr)
 			Front=-1;
 			Rear=-1;
 		}
+		else if (Front== Max-1)
+		{
+			Front=0;
+		}
 		else
 		{
 			Front++;
@@ -126,7 +130,7 @@ u8 Queue_Peek(s32* DataPtr)
 	}
 	else if (Queue_IsEmpty())
 	{
-		printf("Queue is already empty\n\n");
+		printf("Queue is already empty, Nothing to peek\n\n");
 		ErrorState=NOK;
 	}
 	else
@@ -170,7 +174,7 @@ void Queue_Display(void)
 		printf("%d\t", Arr[Counter]);
 		*/
 
-		for (Counter=Front; Counter<=Max-1; Counter++)
+		for (Counter=Front; Counter<Max; Counter++)
 		{
 			printf("%d\t", Arr[Counter]);
 		}
