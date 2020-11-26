@@ -1,7 +1,7 @@
-# 1 ".\\Tooling.c"
+# 1 "Tooling.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 ".\\Tooling.c"
+# 1 "Tooling.c"
 # 1 "D:/NTI/MinGW/mingw64/x86_64-w64-mingw32/include/stdio.h" 1 3
 # 9 "D:/NTI/MinGW/mingw64/x86_64-w64-mingw32/include/stdio.h" 3
 # 1 "D:/NTI/MinGW/mingw64/x86_64-w64-mingw32/include/crtdefs.h" 1 3
@@ -852,10 +852,10 @@ void __attribute__((__cdecl__)) __mingw_str_free(void *ptr);
 
 # 1 "D:/NTI/MinGW/mingw64/x86_64-w64-mingw32/include/_mingw_print_pop.h" 1 3
 # 1010 "D:/NTI/MinGW/mingw64/x86_64-w64-mingw32/include/stdio.h" 2 3
-# 2 ".\\Tooling.c" 2
+# 2 "Tooling.c" 2
 
 
-# 3 ".\\Tooling.c"
+# 3 "Tooling.c"
 int main()
 {
  int x =10;
